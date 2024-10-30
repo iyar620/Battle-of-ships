@@ -209,6 +209,24 @@ function startGame() {
     spawnWoods();
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
+     // מאזיני מגע
+    canvas.addEventListener('touchstart', (event) => {
+        const nearestEnemy = getNearestEnemy();
+        if (nearestEnemy) {
+            player.shoot(nearestEnemy);
+        }
+        event.preventDefault(); // למנוע גלילה
+    });
+
+    canvas.addEventListener('touchmove', (event) => {
+        const touch = event.touches[0];
+        player.x = touch.clientX - player.width / 2;
+        player.y = touch.clientY - player.height / 2;
+        event.preventDefault(); // למנוע גלילה
+    });
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
     gameLoop();
 }
 
