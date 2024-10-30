@@ -243,6 +243,20 @@ function startGame() {
         // ננסה להסיר את preventDefault זמנית לבדיקה
         // event.preventDefault();
     });
+    function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
+
+function startGame() {
+    resizeCanvas(); // קובע את הגודל בהתחלה
+    player = new Ship(canvas.width / 2, canvas.height - 60, loadedImages.player);
+    // מאזיני מגע וכו'
+    gameLoop();
+}
+
 
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
