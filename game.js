@@ -224,6 +224,25 @@ function startGame() {
         player.y = touch.clientY - player.height / 2;
         event.preventDefault(); // למנוע גלילה
     });
+        // בדיקת ירי במגע
+    canvas.addEventListener('touchstart', (event) => {
+        const nearestEnemy = getNearestEnemy();
+        if (nearestEnemy) {
+            player.shoot(nearestEnemy);
+        }
+        // ננסה להסיר את preventDefault זמנית לבדיקה
+        // event.preventDefault();
+    });
+
+    // בדיקת תזוזת השחקן במגע
+    canvas.addEventListener('touchmove', (event) => {
+        const touch = event.touches[0];
+        console.log("Touch X:", touch.clientX, "Touch Y:", touch.clientY); // בדיקת קואורדינטות במסוף
+        player.x = touch.clientX - player.width / 2;
+        player.y = touch.clientY - player.height / 2;
+        // ננסה להסיר את preventDefault זמנית לבדיקה
+        // event.preventDefault();
+    });
 
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
