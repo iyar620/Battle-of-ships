@@ -29,3 +29,25 @@ body, html {
     font-size: 16px;
     cursor: pointer;
 }
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+}
+
+@media (max-width: 600px) {
+    button {
+        padding: 15px 30px;
+        font-size: 1.2em;
+    }
+}
+@media (max-width: 600px) {
+    canvas {
+        width: 90vw; /* 90% מרוחב המסך */
+        height: 70vh; /* 70% מגובה המסך */
+    }
+
+    #gameOverMessage {
+        font-size: 1.5em; /* גודל גדול יותר לטקסט */
+    }
+}
+
