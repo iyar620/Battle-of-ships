@@ -31,6 +31,9 @@ function loadImages() {
         loadedImages[key].onerror = () => console.error(`Failed to load ${images[key]}`);
     }
 }
+document.body.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+}, { passive: false });
 
 function onImageLoad() {
     imagesLoaded++;
